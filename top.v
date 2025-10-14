@@ -1,3 +1,14 @@
+module full_adder(
+    input A, B, cin,
+    output Y, cout
+);
+    wire sum;
+    assign sum = A ^ B;
+    assign Y = sum ^ cin;
+    assign cout = (sum & cin) | (A & B);
+
+endmodule
+
 module top(
     input [9:0]sw,
     output [13:0] led
@@ -20,7 +31,7 @@ ones_compliment ones (
 
 twos_compliment twos (
     .A(sw[9:2]),
-    .B(led[13:6])
+    .Y(led[13:6])
  );
    endmodule
     
